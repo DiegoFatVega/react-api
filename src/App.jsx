@@ -1,6 +1,6 @@
 import Appheader from './components/AppHeader';
 import AppMainActors from './components/AppMainActors';
-import AppMainActresses from './components/AppMainActresses';
+
 
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
     <>
       <Appheader />
       <AppMainActors />
-      <AppMainActresses />
     </>
   )
 }
