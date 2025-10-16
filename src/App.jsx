@@ -9,9 +9,15 @@ function App() {
 
   function fetchData() {
     axios.get('https://lanciweb.github.io/demo/api/actors')
-      .then(res => setActorsList(res.data))
+      .then(res => {
+        const list = res.data;
+        setActorsList(list)
+        console.log(list)
+      })
       .catch(err => console.error(err));
+
   }
+
   useEffect(fetchData, []);
 
   return (
@@ -25,10 +31,18 @@ function App() {
             {
               actorsList.map(actor =>
                 <div key={actor.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
-                  <div className='card h-100'>
+                  <div className='card h-100 bg-info bg-opacity-25'>
                     <img src={actor.image} alt={actor.name} className="card-img-top p-3" style={{ height: "500px", objectFit: "contain" }} />
                     <div className="card-body text-center">
-                      <h5 className="cart-title"> {actor.name}</h5>
+                      <h3 className="cart-title"> {actor.name}</h3>
+                    </div>
+                    <div className='text-decoration-none'>
+                      <ul className='text-decoration-none'>
+                        <li className='text-decoration-none'><b>Birth Year: </b>{actor.birth_year}</li>
+                        <li> <b>Nationality: </b> {actor.nationality}</li>
+                        <li> <b>Biography: </b>{actor.biography} </li>
+                        <li> <b>Awards: </b>{actor.awards} </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
